@@ -1,3 +1,7 @@
+import Avatar from './components/Avatar'
+import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
+
 type Post = {
   name: string
   handle: string
@@ -32,14 +36,6 @@ const posts: Post[] = [
   },
 ]
 
-function Avatar({ initials, small = false }: { initials: string; small?: boolean }) {
-  return (
-    <div className={`grid shrink-0 place-items-center rounded-full bg-sky-100 font-bold text-sky-700 ${small ? 'size-9 text-xs' : 'size-11 text-sm'}`}>
-      {initials}
-    </div>
-  )
-}
-
 function PostCard({ post }: { post: Post }) {
   return (
     <article className="border-b border-slate-200 px-5 py-5 transition-colors hover:bg-slate-50/70 sm:px-7">
@@ -68,30 +64,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#f7f9fb] text-slate-950">
-      <header className="sticky top-0 z-10 border-b border-slate-200 bg-white/90 backdrop-blur">
-        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-          <div className="flex items-center gap-3">
-            <div className="grid size-9 place-items-center rounded-xl bg-sky-500 text-lg font-black text-white">t</div>
-            <span className="text-lg font-black tracking-tight">threadline</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="hidden text-sm text-slate-500 sm:inline">Good morning, Alex</span>
-            <Avatar initials="AJ" small />
-          </div>
-        </div>
-      </header>
+      <Navbar />
 
       <main className="mx-auto grid max-w-6xl grid-cols-1 lg:grid-cols-[180px_minmax(0,620px)_260px] lg:gap-8 lg:px-8">
-        <nav className="hidden pt-8 lg:block">
-          <div className="sticky top-24 space-y-2">
-            {['Home', 'Explore', 'Notifications', 'Messages', 'Bookmarks'].map((item, index) => (
-              <button key={item} className={`flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-semibold ${index === 0 ? 'bg-sky-50 text-sky-700' : 'text-slate-600 hover:bg-white hover:text-slate-950'}`}>
-                <span className="w-5 text-center text-base">{['⌂', '#', '♡', '✉', '▱'][index]}</span>{item}
-              </button>
-            ))}
-            <button className="mt-5 w-full rounded-xl bg-sky-500 px-4 py-3 text-sm font-bold text-white shadow-sm hover:bg-sky-600">Post</button>
-          </div>
-        </nav>
+        <Sidebar />
 
         <section className="min-h-screen border-x border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-5 py-6 sm:px-7">
