@@ -1,3 +1,5 @@
+import TrendingList from './TrendingList'
+
 const trends = ['Design systems', 'Spring Boot', 'Build in public']
 
 function RightSidebar() {
@@ -12,17 +14,7 @@ function RightSidebar() {
             placeholder="Search threadline"
           />
         </label>
-        <div className="rounded-xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
-          <h2 className="font-black tracking-tight">Trending now</h2>
-          <div className="mt-4 space-y-4">
-            {trends.map((trend, index) => (
-              <div key={trend}>
-                <p className="text-xs text-slate-400">{index + 1} · Trending</p>
-                <p className="mt-1 text-sm font-bold">{trend}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <TrendingList trends={trends} />
       </div>
     </aside>
   )
