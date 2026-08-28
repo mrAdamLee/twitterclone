@@ -1,6 +1,5 @@
 import Navbar from './components/Navbar'
-import PostComposer from './components/PostComposer'
-import PostCard from './components/PostCard'
+import Feed from './components/Feed'
 import type { Post } from './components/PostCard'
 import RightSidebar from './components/RightSidebar'
 import Sidebar from './components/Sidebar'
@@ -37,14 +36,7 @@ function App() {
       <main className="mx-auto grid max-w-6xl grid-cols-1 lg:grid-cols-[180px_minmax(0,620px)_260px] lg:gap-8 lg:px-8">
         <Sidebar />
 
-        <section className="min-h-screen border-x border-slate-200 bg-white">
-          <div className="border-b border-slate-200 px-5 py-6 sm:px-7">
-            <h1 className="text-xl font-black tracking-tight">Your feed</h1>
-            <p className="mt-1 text-sm text-slate-500">A calm place for useful thoughts.</p>
-            <PostComposer />
-          </div>
-          {posts.map((post) => <PostCard key={post.handle} post={post} />)}
-        </section>
+        <Feed posts={posts} />
 
         <RightSidebar />
       </main>
