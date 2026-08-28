@@ -1,4 +1,5 @@
 import Avatar from './Avatar'
+import PostActions from './PostActions'
 
 export type Post = {
   name: string
@@ -27,12 +28,11 @@ function PostCard({ post }: PostCardProps) {
             <button aria-label="More post options" className="ml-auto shrink-0 px-2 text-lg leading-none text-slate-400 hover:text-sky-600">...</button>
           </div>
           <p className="mt-2 text-[15px] leading-6 text-slate-800">{post.body}</p>
-          <div className="mt-4 flex max-w-md justify-between text-sm text-slate-500">
-            <button className="hover:text-sky-600">Reply <span className="ml-1">{post.replies}</span></button>
-            <button className="hover:text-emerald-600">Repost <span className="ml-1">{post.reposts}</span></button>
-            <button className="hover:text-rose-600">Like <span className="ml-1">{post.likes}</span></button>
-            <button aria-label="Share post" className="hover:text-sky-600">Share</button>
-          </div>
+          <PostActions
+            replies={post.replies}
+            reposts={post.reposts}
+            likes={post.likes}
+          />
         </div>
       </div>
     </article>
